@@ -1,15 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
-interface ButtonProps {
-  children: React.ReactNode;
-  primary?: boolean;
-  secondary?: boolean;
-  filterBar?: boolean;
-  active?: boolean;
-  create?: boolean;
-  onClick?: () => void;
-}
+import { ButtonProps } from "../types";
 
 const StyledButton = styled.button<ButtonProps>`
   padding: 10px 20px;

@@ -1,8 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
-import { useDispatch } from "react-redux";
-import { changeStatus } from "../actions";
 
-const flash = keyframes`
+export const flash = keyframes`
   0% {
     background-color: lightgreen;
   }
@@ -11,7 +9,7 @@ const flash = keyframes`
   }
 `;
 
-const UserCardContainer = styled.div`
+export const UserCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,45 +23,45 @@ const UserCardContainer = styled.div`
   padding: 12px;
 `;
 
-const DotContainer = styled.div`
+export const DotContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
 `;
 
-const Thumbnail = styled.img`
+export const Thumbnail = styled.img`
   margin-right: 10px;
   width: 40px;
 `;
 
-const UserCardInfo = styled.div`
+export const UserCardInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `;
 
-const Title = styled.span`
+export const Title = styled.span`
   color: #231e1e;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
 `;
 
-const DataContainer = styled.div`
+export const DataContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 `;
 
-const Description = styled.span`
+export const Description = styled.span`
   max-width: 150px;
   margin-top: 2px;
   color: #8b8f98;
   font-size: 12px;
 `;
 
-const StatusDot = styled.div`
+export const StatusDot = styled.div`
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -89,32 +87,3 @@ const StatusDot = styled.div`
     pointer-events: none;
   }
 `;
-
-interface Props {
-  id: string;
-  title: string;
-  description: string;
-  active: boolean;
-}
-
-function QuoteCard({ id, title, description, active }: Props) {
-  const dispatch = useDispatch();
-  const handleStatus = () => dispatch(changeStatus(id));
-
-  return (
-    <UserCardContainer>
-      <DotContainer>
-        <StatusDot active={active} />
-      </DotContainer>
-      <DataContainer>
-        <Thumbnail src="/quote.svg" alt="icon" />
-        <UserCardInfo>
-          <Title onClick={handleStatus}>{title}</Title>
-          <Description>{description}</Description>
-        </UserCardInfo>
-      </DataContainer>
-    </UserCardContainer>
-  );
-}
-
-export default QuoteCard;
